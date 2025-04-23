@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_test4/views/widgets/loading_shimmer.dart';
 import 'package:project_test4/views/widgets/product_card.dart';
 import '../controllers/product_controller.dart';
-import "package:get/get.dart";
 
 class ProductListView extends StatelessWidget {
-  final controller = Get.find<ProductController>();
+  final ProductController controller = Get.put(ProductController());
 
   ProductListView({super.key});
 
@@ -24,7 +24,7 @@ class ProductListView extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 0.7,
+                childAspectRatio: 0.65,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
               ),
@@ -39,7 +39,7 @@ class ProductListView extends StatelessWidget {
 
   Widget _buildSearchBar() {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(10),
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Search product...',
@@ -52,18 +52,40 @@ class ProductListView extends StatelessWidget {
   }
 
   Widget _buildCategoryChips() {
-    return Obx(() => SizedBox(
-      height: 40,
+    return Obx(() => Container(
+      height: 50,
+      padding: const EdgeInsets.only(left: 8),
       child: ListView(
         scrollDirection: Axis.horizontal,
-        children: controller.categories
-            .map((cat) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: ActionChip(
-            label: Text(cat),
-            onPressed: () => controller.filterByCategory(cat),
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: ActionChip(
+              label: const Text('All'),
+              backgroundColor: controller.selectedCategory.value == ''
+                  ? Colors.deepPurple.shade300
+                  : Colors.grey.shade200,
+              onPressed: () {
+                controller.filterByCategory('');
+              },
+            ),
           ),
-        )).toList(),
+          ...controller.categories.map(
+                (cat) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: ActionChip(
+                label: Text(
+                  cat.capitalizeFirst ?? cat,
+                  style: const TextStyle(fontSize: 13),
+                ),
+                backgroundColor: controller.selectedCategory.value == cat
+                    ? Colors.deepPurple.shade300
+                    : Colors.grey.shade200,
+                onPressed: () => controller.filterByCategory(cat),
+              ),
+            ),
+          ),
+        ],
       ),
     ));
   }

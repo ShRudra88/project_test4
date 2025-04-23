@@ -50,7 +50,7 @@ class _SplashViewState extends State<SplashView>
               Icon(Icons.shopping_bag, size: 100, color: Colors.deepPurple),
               SizedBox(height: 20),
               Text(
-                "Welcome to ShopEase",
+                "Welcome to Our App",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
