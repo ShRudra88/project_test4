@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import '../models/product_model.dart';
 
 class ProductDetailsView extends StatelessWidget {
+  const ProductDetailsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final product = Get.arguments as Product;

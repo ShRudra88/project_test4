@@ -1,16 +1,40 @@
-# project_test4
+# 🛍️ Flutter Product App
 
-A new Flutter project.
+A modern Flutter app built with **GetX** for routing and state management. This app demonstrates API integration, search, filtering, image carousels, and reusable components using clean architecture.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔄 Fetch products from DummyJSON API
+- 🔍 Search products by title
+- 📂 Filter by product category
+- 📄 Product details page with image carousel
+- 🚀 GetX for routing, state, and dependency management
+- 💻 Clean architecture & modern UI
+- 📱 Fully responsive design
+- 🎨 Custom centralized theme
+- 🔄 Loading indicators and shimmer effect
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📦 Dependencies
+
+```yaml
+get: ^4.6.6
+carousel_slider: ^4.2.0
+shimmer: ^3.0.0
+http: ^0.13.6
+
+
+
+
+lib/
+│
+├── controllers/       → GetX controllers
+├── models/            → Data models
+├── services/          → API service layer
+├── views/             → UI screens
+│   ├── widgets/       → Reusable widgets
+├── theme/             → App theme and styles
+└── main.dart          → Entry point with GetMaterialApp

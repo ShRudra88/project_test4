@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:project_test4/views/widgets/loading_shimmer.dart';
 import 'package:project_test4/views/widgets/product_card.dart';
 import '../controllers/product_controller.dart';
-import 'package:get/get.dart';
+import "package:get/get.dart";
 
 class ProductListView extends StatelessWidget {
   final controller = Get.find<ProductController>();
+
+  ProductListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +63,7 @@ class ProductListView extends StatelessWidget {
             label: Text(cat),
             onPressed: () => controller.filterByCategory(cat),
           ),
-        ))
-            .toList(),
+        )).toList(),
       ),
     ));
   }
